@@ -1,8 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+
 
 class Home extends Component {
-    render(){
-        return (<p>Home works</p>);
+    render() {
+        return (
+            <p>Home work's</p>
+        );
     }
 }
 

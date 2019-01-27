@@ -13,7 +13,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-
+import ENV from "../Settings/EnvVariables";
 
 class Login extends Component {
 
@@ -33,7 +33,9 @@ class Login extends Component {
     await this.setState({
       user: JSON.parse(user)
     });
-    window.location = '/home'
+    if(user){
+        this.props.history.push('/home');
+    }
   }
 
   handleClickShowPassword = () => {
@@ -67,13 +69,13 @@ class Login extends Component {
   };
 
   async login(){
-    axios.get(`http://localhost:5000/api/users/login?userName=${this.state.email}&password=${this.state.password}`).then((response)=> {
+    axios.get(`${ENV.userAPI}/api/user?userName=${this.state.email}&password=${this.state.password}`).then((response)=> {
       var user = response.data;
       localStorage.setItem('userTesterDS', JSON.stringify(user));
       this.setState({
         user: user
       });
-      window.location = '/home'
+      this.props.history.push('/home');
       console.log(this.props,this.state)
     }).catch(error => {
       console.log('Error => ',error);
