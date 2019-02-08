@@ -24,7 +24,8 @@ class Header extends Component {
                         <Typography variant="h6" color="inherit">
                             TesterDS
                         </Typography>
-                        <Button color="inherit" onClick={()=> this.props.history.push('/home')}>Home</Button>
+                        <Button color="inherit" onClick={()=> window.location = 'home'}>Home</Button>
+                        <Button color="inherit" onClick={()=> window.location = 'administration'}>Administration</Button>
                         <Button color="inherit" style={{position:'absolute',right: '0'}} onClick={()=> {
                             this.logOut();
                         }}>Logout</Button>
